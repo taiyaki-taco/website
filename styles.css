@@ -1,0 +1,285 @@
+/*
+  Shared theme for the whole site. Both pages (index.html = Menu and
+  hiring.html = We're Hiring!) link to this one file, so the look stays
+  consistent and colors only need to be changed in one place.
+*/
+:root {
+  --beige:      #f3ead8;  /* page background */
+  --card:       #fbf6ec;  /* slightly lighter panel behind the menu */
+  --blue:       #2596be;  /* main accent color (headings, dividers) */
+  --ink:        #33302b;  /* main text color, a soft near-black */
+  --muted:      #6f6a61;  /* secondary text (notes, hours labels) */
+  --line:       #e3d8c2;  /* subtle divider lines */
+}
+
+/* --- Base / mobile-first --- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--beige);
+  color: var(--ink);
+  /* System fonts: no external downloads, works offline, loads instantly. */
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.5;
+}
+
+/* Centered single column that stays readable on large screens. */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 18px 48px;
+}
+
+/* --- Page tabs (top-left navigation between Menu and Hiring) --- */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.tabs a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+.tabs a:hover {
+  background: rgba(37, 150, 190, 0.08);
+  color: var(--blue);
+}
+/* The tab for the page you are currently on. */
+.tabs a.active {
+  color: var(--blue);
+  background: var(--card);
+  border-color: var(--line);
+}
+
+/* --- Header --- */
+.site-header {
+  text-align: center;
+  padding: 24px 0 12px;
+}
+/* Logo shown above the cafe name. */
+.site-header .logo {
+  display: block;
+  width: 180px;
+  height: auto;
+  margin: 0 auto 12px;
+}
+.site-header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  color: var(--blue);
+}
+.site-header .tagline {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* --- Menu categories (collapsible via <details>/<summary>) --- */
+.menu {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+details {
+  border-bottom: 1px solid var(--line);
+}
+details:last-child {
+  border-bottom: none;
+}
+
+/* The clickable category title. */
+summary {
+  /* Remove the default disclosure triangle so we can use our own marker. */
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+summary::-webkit-details-marker { display: none; } /* Safari/Chrome */
+
+summary h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--blue);
+}
+
+/* Our own open/close marker: "+" when closed, "−" when open. */
+summary::after {
+  content: "+";
+  color: var(--blue);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+details[open] > summary::after {
+  content: "\2212"; /* minus sign */
+}
+
+/* A subtle highlight so it is obvious the header is tappable. */
+summary:hover,
+summary:focus-visible {
+  background: rgba(37, 150, 190, 0.08);
+  outline: none;
+}
+
+/* --- Items inside a category --- */
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0 18px 14px;
+}
+.item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  border-top: 1px dotted var(--line);
+}
+.item:first-child {
+  border-top: none;
+}
+
+.item-price {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* A small note under a category (e.g. how flavors work). */
+.note {
+  margin: 4px 18px 0;
+  padding: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+/* A "free choice of flavors" line spans the full width. */
+.flavors {
+  display: block;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* --- Hiring page content --- */
+/* A themed card used to hold the hiring information. */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px 20px;
+}
+.panel h2 {
+  margin: 0 0 6px;
+  color: var(--blue);
+  font-size: 1.6rem;
+}
+.panel h3 {
+  color: var(--blue);
+  font-size: 1.15rem;
+  margin: 22px 0 8px;
+}
+.panel p { margin: 10px 0; }
+.panel ul { margin: 10px 0; padding-left: 20px; }
+.panel li { margin: 6px 0; }
+/* The email subject template, shown in a monospace pill so it stands out. */
+.subject-line {
+  display: inline-block;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  background: var(--beige);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+/* A smaller monospace box for the email address (LaTeX \texttt style). */
+.email-box {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  background: var(--beige);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+/* An inline monospace box for short placeholder tokens like [NAME] or [AT]. */
+.token {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--beige);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+/* Compliance warning callout. */
+.warning {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--blue);
+  background: rgba(37, 150, 190, 0.06);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+}
+
+/* --- Footer: address and hours --- */
+.site-footer {
+  margin-top: 28px;
+  padding: 22px 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-align: center;
+}
+.site-footer h2 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: var(--blue);
+}
+.site-footer p {
+  margin: 4px 0;
+}
+.site-footer .label {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* Small reminder shown under the hours. */
+.site-footer .hours-note {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+/* Row of icon links (Instagram, Google Maps, Yelp) at the bottom of the footer. */
+.site-footer .social {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+/* Change these two numbers to resize all footer icons at once. */
+.site-footer .social a img {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+/* Slight fade on hover/focus so the icons read as links. */
+.site-footer .social a:hover img,
+.site-footer .social a:focus-visible img {
+  opacity: 0.7;
+}
+
+/* --- Scale up slightly on tablet / desktop --- */
+@media (min-width: 600px) {
+  .site-header h1 { font-size: 3rem; }
+  summary h2      { font-size: 1.45rem; }
+  .page           { padding: 32px 24px 56px; }
+}
