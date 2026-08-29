@@ -1,6 +1,6 @@
 /*
   Shared theme for the whole site. Both pages (index.html = Menu and
-  hiring.html = We're Hiring!) link to this one file, so the look stays
+  the hiring pages) link to this one file, so the look stays
   consistent and colors only need to be changed in one place.
 */
 :root {
@@ -34,6 +34,9 @@ body {
 /* --- Page tabs (top-left navigation between Menu and Hiring) --- */
 .tabs {
   display: flex;
+  /* Three tabs do not fit on one line on a narrow phone, so let them wrap
+     onto a second row instead of overflowing off the side of the screen. */
+  flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 12px;
 }
