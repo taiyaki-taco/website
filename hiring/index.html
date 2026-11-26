@@ -13,7 +13,9 @@
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 
   <!-- Shared theme for every page (see styles.css). -->
-  <link rel="stylesheet" href="../styles.css">
+  <!-- The "?v=3" makes browsers fetch the current stylesheet instead of an
+       old saved copy. Bump the number whenever styles.css changes. -->
+  <link rel="stylesheet" href="../styles.css?v=3">
 </head>
 
 <body>
@@ -27,9 +29,9 @@
     </nav>
 
     <header class="site-header">
-      <!-- The "?v=7" makes browsers fetch the new logo instead of an old saved copy.
+      <!-- The "?v=8" makes browsers fetch the new logo instead of an old saved copy.
            Bump the number whenever logo.png is replaced. -->
-      <img class="logo" src="../images/logo.png?v=7" alt="Kafe Toribashi logo" width="120" height="120">
+      <img class="logo" src="../images/logo.png?v=8" alt="Kafe Toribashi logo" width="120" height="120">
       <h1>Kafe Toribashi</h1>
       <p class="tagline">Coffee ★ Matcha ★ Ice Cream ★ Ramen ★ Taiyaki ★ Snacks</p>
     </header>
