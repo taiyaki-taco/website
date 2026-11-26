@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body>
+<body class="menu-page">
   <div class="page">
 
     <!-- Top-left tabs to switch between pages. "active" marks the current one. -->
@@ -27,9 +27,13 @@
     </nav>
 
     <header class="site-header">
-      <img class="logo" src="../images/logo.png" alt="Kafe Toribashi logo" width="120" height="120">
+      <img class="cutout cutout-taiyaki" src="../images/halftone-taiyaki.png" alt="" aria-hidden="true">
+      <img class="cutout cutout-ramen" src="../images/halftone-ramen.png" alt="" aria-hidden="true">
+      <!-- The "?v=7" makes browsers fetch the new logo instead of an old saved copy.
+           Bump the number whenever logo.png is replaced. -->
+      <img class="logo" src="../images/logo.png?v=7" alt="Kafe Toribashi logo" width="120" height="120">
       <h1>Kafe Toribashi</h1>
-      <p class="tagline">Coffee &middot; Matcha &middot; Ice Cream &middot; Ramen &middot; Taiyaki &middot; Snacks</p>
+      <p class="tagline">Coffee ★ Matcha ★ Ice Cream ★ Ramen ★ Taiyaki ★ Snacks</p>
     </header>
 
     <!--
@@ -40,21 +44,122 @@
       <!-- <details open> -->
       <details>
         <summary><h2>Coffee</h2></summary>
+        <!-- Drinks that come in sizes list one price per size (class "item-sized"). -->
+        <p class="note">Small 8 oz ★ Medium 12 oz ★ Large 16 oz ★ Iced 16 oz</p>
         <ul class="items">
-          <li class="item"><span class="item-name">Americano</span><span class="item-price">$4.00–$4.75</span></li>
+          <li class="item item-sized">
+            <span class="item-name">Americano</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $4.00</li>
+              <li><span class="size-name">Medium</span> $4.25</li>
+              <li><span class="size-name">Large</span> $4.50</li>
+              <li><span class="size-name">Iced</span> $4.75</li>
+            </ul>
+          </li>
           <li class="item"><span class="item-name">Cappuccino</span><span class="item-price">$4.75</span></li>
-          <li class="item"><span class="item-name">Latte</span><span class="item-price">$5.00–$7.00</span></li>
-          <li class="item"><span class="item-name">Vanilla Latte</span><span class="item-price">$6.00–$8.00</span></li>
-          <li class="item"><span class="item-name">Caramel Latte</span><span class="item-price">$6.00–$8.00</span></li>
-          <li class="item"><span class="item-name">Hazelnut Latte</span><span class="item-price">$6.00–$8.00</span></li>
-          <li class="item"><span class="item-name">Lavender Latte</span><span class="item-price">$6.00–$8.00</span></li>
-          <li class="item"><span class="item-name">Real Pumpkin Latte</span><span class="item-price">$7.50–$8.50</span></li>
-          <li class="item"><span class="item-name">Mocha Latte</span><span class="item-price">$6.00–$8.00</span></li>
-          <li class="item"><span class="item-name">White Mocha</span><span class="item-price">$6.00–$8.00</span></li>
-          <li class="item"><span class="item-name">Drip Coffee</span><span class="item-price">$3.00–$4.75</span></li>
-          <li class="item"><span class="item-name">Cafe Au Lait</span><span class="item-price">$4.00–$5.00</span></li>
-          <li class="item"><span class="item-name">Hot Chocolate</span><span class="item-price">$5.00–$7.00</span></li>
-          <li class="item"><span class="item-name">Peppermint Hot Chocolate</span><span class="item-price">$6.00–$8.00</span></li>
+          <li class="item item-sized">
+            <span class="item-name">Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $5.00</li>
+              <li><span class="size-name">Medium</span> $6.00</li>
+              <li><span class="size-name">Large</span> $7.00</li>
+              <li><span class="size-name">Iced</span> $7.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Vanilla Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+              <li><span class="size-name">Iced</span> $8.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Caramel Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+              <li><span class="size-name">Iced</span> $8.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Hazelnut Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+              <li><span class="size-name">Iced</span> $8.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Lavender Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+              <li><span class="size-name">Iced</span> $8.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Real Pumpkin Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Medium</span> $7.50</li>
+              <li><span class="size-name">Iced</span> $8.50</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Mocha Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+              <li><span class="size-name">Iced</span> $8.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">White Mocha</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+              <li><span class="size-name">Iced</span> $8.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Drip Coffee</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $3.00</li>
+              <li><span class="size-name">Medium</span> $3.75</li>
+              <li><span class="size-name">Large</span> $4.50</li>
+              <li><span class="size-name">Iced</span> $4.75</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Cafe Au Lait</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $4.00</li>
+              <li><span class="size-name">Medium</span> $4.50</li>
+              <li><span class="size-name">Large</span> $5.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Hot Chocolate</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $5.00</li>
+              <li><span class="size-name">Medium</span> $6.00</li>
+              <li><span class="size-name">Large</span> $7.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Peppermint Hot Chocolate</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+            </ul>
+          </li>
           <li class="item"><span class="item-name">Affogato</span><span class="item-price">$7.00</span></li>
           <li class="item"><span class="item-name">Cortado</span><span class="item-price">$4.50</span></li>
           <li class="item"><span class="item-name">Macchiato (Traditional)</span><span class="item-price">$4.25</span></li>
@@ -63,15 +168,29 @@
 
       <details>
         <summary><h2>Matcha</h2></summary>
+        <p class="note">Small 8 oz ★ Medium 12 oz ★ Large 16 oz</p>
         <ul class="items">
           <li class="item"><span class="item-name">Iced Strawberry Matcha Latte</span><span class="item-price">$8.75</span></li>
           <li class="item"><span class="item-name">Iced Blueberry Matcha Latte</span><span class="item-price">$8.75</span></li>
           <li class="item"><span class="item-name">Iced Mango Matcha Latte</span><span class="item-price">$8.75</span></li>
           <li class="item"><span class="item-name">Iced Oreo Matcha Latte</span><span class="item-price">$8.75</span></li>
           <li class="item"><span class="item-name">Iced Pumpkin Spice Matcha Latte</span><span class="item-price">$8.75</span></li>
-          <li class="item"><span class="item-name">Iced Matcha Latte</span><span class="item-price">$$8.00</span></li>
-          <li class="item"><span class="item-name">Matcha Latte (Hot)</span><span class="item-price">$6.00–$8.00</span></li>
-          <li class="item"><span class="item-name">Real Pumpkin Matcha Latte</span><span class="item-price">$7.50–$8.75</span></li>
+          <li class="item"><span class="item-name">Iced Matcha Latte</span><span class="item-price">$8.00</span></li>
+          <li class="item item-sized">
+            <span class="item-name">Matcha Latte (Hot)</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $6.00</li>
+              <li><span class="size-name">Medium</span> $7.00</li>
+              <li><span class="size-name">Large</span> $8.00</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Real Pumpkin Matcha Latte</span>
+            <ul class="sizes">
+              <li><span class="size-name">Medium</span> $7.50</li>
+              <li><span class="size-name">Large</span> $8.75</li>
+            </ul>
+          </li>
           <li class="item"><span class="item-name">Matcha Affogato</span><span class="item-price">$7.00</span></li>
         </ul>
       </details>
@@ -88,7 +207,7 @@
 
       <details>
         <summary><h2>Hot Tea</h2></summary>
-        <p class="note">Hot tea $4.25–$4.50. Choose any kind of tea below.</p>
+        <p class="note">Medium (12 oz) $4.25 ★ Large (16 oz) $4.50. Choose any kind of tea below.</p>
         <ul class="items">
           <li class="item"><span class="item-name">Japanese Green Tea</span></li>
           <li class="item"><span class="item-name">Oolong</span></li>
@@ -103,6 +222,7 @@
 
       <details>
         <summary><h2>Milk Beverages</h2></summary>
+        <p class="note">Small 8 oz ★ Medium 12 oz ★ Large 16 oz</p>
         <ul class="items">
           <li class="item"><span class="item-name">Iced Strawberry Milk</span><span class="item-price">$6.50</span></li>
           <li class="item"><span class="item-name">Iced Blueberry Mlilk</span><span class="item-price">$6.50</span></li>
@@ -110,14 +230,28 @@
           <li class="item"><span class="item-name">Iced Real-Pumpkin Milk</span><span class="item-price">$6.50</span></li>
           <li class="item"><span class="item-name">Real-Pumpkin Milk (Hot)</span><span class="item-price">$6.50</span></li>
           <li class="item"><span class="item-name">Iced Milk</span><span class="item-price">$3.50</span></li>
-          <li class="item"><span class="item-name">Cold Milk (Non-Iced)</span><span class="item-price">$2.50–$3.50</span></li>
-          <li class="item"><span class="item-name">Milk (Hot)</span><span class="item-price">$2.50–$3.50</span></li>
+          <li class="item item-sized">
+            <span class="item-name">Cold Milk (Non-Iced)</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $2.50</li>
+              <li><span class="size-name">Medium</span> $3.00</li>
+              <li><span class="size-name">Large</span> $3.50</li>
+            </ul>
+          </li>
+          <li class="item item-sized">
+            <span class="item-name">Milk (Hot)</span>
+            <ul class="sizes">
+              <li><span class="size-name">Small</span> $2.50</li>
+              <li><span class="size-name">Medium</span> $3.00</li>
+              <li><span class="size-name">Large</span> $3.50</li>
+            </ul>
+          </li>
         </ul>
       </details>
 
       <details>
         <summary><h2>Ice Cream</h2></summary>
-        <p class="note">Single scoop $5.75 &middot; Double scoop $8.75</p>
+        <p class="note">Single scoop $5.75 ★ Double scoop $8.75</p>
         <ul class="items">
           <li class="item"><span class="item-name">Vanilla Bean</span></li>
           <li class="item"><span class="item-name">Heaven</span></li>
@@ -227,15 +361,16 @@
 
     </main>
 
-    <!--Footer with location and hours.-->
+    <!--Footer with location, a note about hours, and phone.-->
     <footer class="site-footer">
+      <img class="cutout cutout-ice-cream" src="../images/halftone-ice-cream.png" alt="" aria-hidden="true">
+      <img class="cutout cutout-matcha" src="../images/halftone-matcha.png" alt="" aria-hidden="true">
       <h2>Visit Us</h2>
       <p class="label">Address</p>
       <p>95 Fishermans Wharf<br>Monterey, CA 93940</p>
 
       <p class="label" style="margin-top:14px;">Hours</p>
-      <p>Monday – Friday: 10:00 AM – 8:00 PM</p>
-      <p>Saturday – Sunday: 10:00 AM – 8:30 PM</p>
+      <!-- No fixed hours listed here on purpose: they change, and Google is kept up to date. -->
       <p class="hours-note">Please check Google for the most accurate hours.</p>
 
       <p class="label" style="margin-top:14px;">Phone</p>
@@ -262,5 +397,9 @@
     </footer>
 
   </div>
+
+  <!-- GoatCounter: privacy-friendly visitor counter (no cookies).-->
+  <script data-goatcounter="https://kafetoribashi.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -24,6 +24,15 @@ body {
   line-height: 1.5;
 }
 
+/* The decorative cutouts hang slightly off the sides of the screen.
+   Clipping here stops them from making the page wider than the screen
+   (which would cause sideways scrolling on a phone). It has to be set on
+   both: with only one of them, the browser still widens the page. */
+html,
+body {
+  overflow-x: clip;
+}
+
 /* Centered single column that stays readable on large screens. */
 .page {
   max-width: 720px;
@@ -63,13 +72,81 @@ body {
 .site-header {
   text-align: center;
   padding: 24px 0 12px;
+  /* Lets the decorative cutouts below be positioned relative to the header. */
+  position: relative;
 }
+
+/* --- Paper texture (menu page only) --- */
+/* A very faint speckled grain over the page color, so the background looks
+   like paper instead of a flat color. The grain is drawn by the browser
+   from the tiny inline SVG below (no image file needed). To make it
+   stronger or weaker, change the 0.5 near the end (0 = no grain). */
+.menu-page {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.16  0 0 0 0.5 -0.12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+}
+
+/* --- Decorative halftone cutouts (magazine / collage look) --- */
+/* Tilted cutouts of menu items that sit in the background and are partly
+   hidden behind the menu and footer cards. They are purely decorative.
+   Each one has its own rule below: change the numbers there to move,
+   resize, or re-tilt it. */
+.cutout {
+  position: absolute;
+  /* Behind the cards, logo and text, but still above the page background. */
+  z-index: -1;
+  height: auto;
+  /* A soft shadow makes the white sticker edge lift off the page. */
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+  /* Never get in the way of taps or text selection. */
+  pointer-events: none;
+}
+
+/* In the header: taiyaki on the left of the logo, ramen on the right. */
+.cutout-taiyaki {
+  width: 84px;
+  left: -16px;
+  top: 82px;
+  transform: rotate(-16deg);
+}
+.cutout-ramen {
+  width: 128px;
+  right: -40px;
+  top: 14px;
+  transform: rotate(10deg);
+}
+
+/* Between the menu and the footer card: ice cream on the left, matcha on
+   the right. Their tops slide behind the bottom of the menu and their
+   bottoms slide behind the footer card, so only the middle shows. */
+.menu-page .site-footer {
+  /* Extra space above the footer so there is a strip for them to show in. */
+  margin-top: 104px;
+}
+.cutout-ice-cream {
+  width: 170px;
+  left: -34px;
+  top: -122px;
+  transform: rotate(-12deg);
+}
+.cutout-matcha {
+  width: 112px;
+  right: -8px;
+  top: -128px;
+  transform: rotate(14deg);
+}
+
 /* Logo shown above the cafe name. */
 .site-header .logo {
   display: block;
   width: 180px;
   height: auto;
   margin: 0 auto 12px;
+  /* The logo file has a solid white background. "multiply" makes white
+     take on the page color behind it, so no white square shows.
+     Side effect: it also tints the logo's colors slightly, so its blue
+     looks a little darker than the heading blue. To get exact colors,
+     run tools/logo-transparent.swift on the logo and remove this line. */
+  mix-blend-mode: multiply;
 }
 .site-header h1 {
   margin: 0;
@@ -141,11 +218,14 @@ summary:focus-visible {
   margin: 0;
   padding: 0 18px 14px;
 }
+/* Each item is a small stack: the name on the first line and its price
+   (or its row of size prices) on the line below. Every price on the menu
+   starts at the same left edge, which is easier to scan than prices
+   pushed to the far right. */
 .item {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  gap: 4px;
   padding: 7px 0;
   border-top: 1px dotted var(--line);
 }
@@ -155,7 +235,30 @@ summary:focus-visible {
 
 .item-price {
   color: var(--muted);
-  white-space: nowrap;
+}
+
+/* --- Items priced by size (Small / Medium / Large / Iced) --- */
+/* A sized drink (class "item-sized") has a list of sizes under its name
+   instead of a single price. */
+.sizes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Four equal columns (up to Small / Medium / Large / Iced), so the
+     sizes line up from one drink to the next, even on a narrow phone. */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  color: var(--muted);
+}
+/* Each size is a small stack: the size name on top, its price below. */
+.sizes li {
+  display: flex;
+  flex-direction: column;
+}
+.size-name {
+  font-size: 0.85rem;
+  font-style: italic;
 }
 
 /* A small note under a category (e.g. how flavors work). */
@@ -234,6 +337,8 @@ summary:focus-visible {
 
 /* --- Footer: address and hours --- */
 .site-footer {
+  /* Lets the decorative cutouts be positioned relative to this card. */
+  position: relative;
   margin-top: 28px;
   padding: 22px 18px;
   background: var(--card);
@@ -282,6 +387,13 @@ summary:focus-visible {
 
 /* --- Scale up slightly on tablet / desktop --- */
 @media (min-width: 600px) {
+  /* More room on bigger screens: the cutouts grow, and the two in the
+     header move down so their bottoms tuck behind the top of the menu. */
+  .cutout-taiyaki   { width: 136px; left: -84px; top: 118px; }
+  .cutout-ramen     { width: 200px; right: -118px; top: 70px; }
+  .menu-page .site-footer { margin-top: 130px; }
+  .cutout-ice-cream { width: 220px; left: -60px; top: -150px; }
+  .cutout-matcha    { width: 140px; right: -30px; top: -158px; }
   .site-header h1 { font-size: 3rem; }
   summary h2      { font-size: 1.45rem; }
   .page           { padding: 32px 24px 56px; }
